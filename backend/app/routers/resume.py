@@ -5,12 +5,12 @@ Provides endpoints for uploading and analyzing resumes using AI.
 Supports both PDF upload and raw text analysis.
 """
 
-from fastapi import APIRouter, Depends, UploadFile, File, Form, HTTPException
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 
 from app.dependencies import get_ai_engine
+from app.models.resume import ResumeAnalysisRequest, ResumeAnalysisResponse
 from app.services.ai_engine import AIEngine
 from app.services.resume_service import ResumeService
-from app.models.resume import ResumeAnalysisRequest, ResumeAnalysisResponse
 from app.utils.pdf_parser import extract_text_from_pdf
 
 router = APIRouter(prefix="/resume")

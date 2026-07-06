@@ -4,8 +4,8 @@ Cover letter generation service.
 
 import json
 
-from app.services.ai_engine import AIEngine, AIMessage
 from app.models.project import CoverLetterResponse
+from app.services.ai_engine import AIEngine
 
 COVER_LETTER_PROMPT = """You are an expert cover letter writer for tech industry jobs.
 

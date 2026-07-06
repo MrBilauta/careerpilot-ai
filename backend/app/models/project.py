@@ -82,7 +82,9 @@ class InterviewPrepRequest(BaseModel):
 
     job_title: str = Field(..., min_length=1)
     company: str = ""
-    category: str = Field("mixed", pattern="^(behavioral|technical|system_design|mixed)$")
+    category: str = Field(
+        "mixed", pattern="^(behavioral|technical|system_design|mixed)$"
+    )
     difficulty: str = Field("medium", pattern="^(easy|medium|hard)$")
     count: int = Field(5, ge=1, le=20)
 

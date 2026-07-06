@@ -48,7 +48,12 @@ class GitHubService:
         # Fetch repositories (sorted by stars)
         repos_resp = await self._client.get(
             f"/users/{username}/repos",
-            params={"sort": "stars", "direction": "desc", "per_page": 30, "type": "owner"},
+            params={
+                "sort": "stars",
+                "direction": "desc",
+                "per_page": 30,
+                "type": "owner",
+            },
         )
         repos_resp.raise_for_status()
         repos = repos_resp.json()
@@ -91,7 +96,9 @@ class GitHubService:
                 pass
 
             # Calculate quality score
-            quality_score = self._calculate_repo_quality(repo, has_readme, readme_quality)
+            quality_score = self._calculate_repo_quality(
+                repo, has_readme, readme_quality
+            )
 
             repo_analyses.append(
                 RepositoryAnalysis(
@@ -110,12 +117,16 @@ class GitHubService:
 
         # Calculate overall scores
         profile_score = self._calculate_profile_score(user, repo_analyses, total_stars)
-        contribution_score = min(100, (user.get("public_repos", 0) * 3) + (total_stars * 2))
+        contribution_score = min(
+            100, (user.get("public_repos", 0) * 3) + (total_stars * 2)
+        )
 
         # Generate feedback
         strengths = self._identify_strengths(user, repo_analyses, total_stars)
         improvements = self._identify_improvements(user, repo_analyses)
-        portfolio_suggestions = self._generate_suggestions(language_counts, repo_analyses)
+        portfolio_suggestions = self._generate_suggestions(
+            language_counts, repo_analyses
+        )
 
         return GitHubAnalysisResponse(
             username=username,
@@ -126,7 +137,9 @@ class GitHubService:
             followers=user.get("followers", 0),
             following=user.get("following", 0),
             total_stars=total_stars,
-            top_languages=dict(sorted(language_counts.items(), key=lambda x: x[1], reverse=True)[:10]),
+            top_languages=dict(
+                sorted(language_counts.items(), key=lambda x: x[1], reverse=True)[:10]
+            ),
             contribution_score=min(contribution_score, 100),
             profile_score=profile_score,
             repositories=repo_analyses[:10],  # Top 10
@@ -173,9 +186,7 @@ class GitHubService:
         score += min(len(repos) * 3, 25)
         score += min(total_stars * 2, 20)
         score += min(user.get("followers", 0), 15)
-        avg_quality = (
-            sum(r.quality_score for r in repos) / len(repos) if repos else 0
-        )
+        avg_quality = sum(r.quality_score for r in repos) / len(repos) if repos else 0
         score += int(avg_quality * 0.15)
         return min(score, 100)
 
@@ -185,12 +196,16 @@ class GitHubService:
         """Identify profile strengths."""
         strengths = []
         if len(repos) >= 10:
-            strengths.append(f"Active developer with {len(repos)} original repositories")
+            strengths.append(
+                f"Active developer with {len(repos)} original repositories"
+            )
         if total_stars >= 10:
             strengths.append(f"Community recognition with {total_stars} total stars")
         readme_good = sum(1 for r in repos if r.readme_quality in ("good", "excellent"))
         if readme_good >= 3:
-            strengths.append(f"Well-documented projects ({readme_good} repos with quality READMEs)")
+            strengths.append(
+                f"Well-documented projects ({readme_good} repos with quality READMEs)"
+            )
         if user.get("bio") and user.get("blog"):
             strengths.append("Complete profile with bio and website")
         return strengths or ["Getting started — keep building and sharing!"]

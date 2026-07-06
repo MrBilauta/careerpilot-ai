@@ -4,8 +4,8 @@ GitHub Analyzer API endpoints.
 
 from fastapi import APIRouter, HTTPException
 
-from app.services.github_service import GitHubService
 from app.models.project import GitHubAnalysisRequest, GitHubAnalysisResponse
+from app.services.github_service import GitHubService
 
 router = APIRouter(prefix="/github")
 
@@ -23,6 +23,6 @@ async def analyze_github_profile(
         raise HTTPException(
             status_code=404 if "404" in str(e) else 500,
             detail=f"Failed to analyze GitHub profile: {e}",
-        )
+        ) from e
     finally:
         await service.close()

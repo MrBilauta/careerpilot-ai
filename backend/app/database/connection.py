@@ -5,7 +5,7 @@ Provides an async-compatible Supabase client for database operations.
 Falls back gracefully when Supabase is not configured (local dev mode).
 """
 
-from supabase import create_client, Client
+from supabase import Client, create_client
 
 from app.config import settings
 

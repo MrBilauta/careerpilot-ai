@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Github, Loader2, Star, GitFork, Users, Code, AlertCircle, Zap, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -111,7 +112,7 @@ export default function GitHubPage() {
           <Card className="glass-card">
             <CardContent className="p-6 flex items-center gap-6">
               {result.avatar_url && (
-                <img src={result.avatar_url} alt={result.name} className="h-16 w-16 rounded-full border-2 border-white/10" />
+                <Image src={result.avatar_url} alt={result.name} width={64} height={64} className="h-16 w-16 rounded-full border-2 border-white/10" />
               )}
               <div className="flex-1">
                 <h3 className="font-semibold text-lg">{result.name}</h3>

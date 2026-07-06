@@ -5,9 +5,9 @@ ATS Scanner API endpoints.
 from fastapi import APIRouter, Depends
 
 from app.dependencies import get_ai_engine
+from app.models.resume import ATSComparisonRequest, ATSComparisonResponse
 from app.services.ai_engine import AIEngine
 from app.services.resume_service import ResumeService
-from app.models.resume import ATSComparisonRequest, ATSComparisonResponse
 
 router = APIRouter(prefix="/ats")
 

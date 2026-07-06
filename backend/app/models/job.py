@@ -3,12 +3,12 @@ Job and internship models.
 """
 
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 
 from pydantic import BaseModel, Field
 
 
-class JobStatus(str, Enum):
+class JobStatus(StrEnum):
     """Job application tracking status."""
 
     WISHLIST = "wishlist"

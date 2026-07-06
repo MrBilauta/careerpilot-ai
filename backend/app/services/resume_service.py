@@ -7,12 +7,12 @@ scoring, ATS compatibility, keyword analysis, and improvement suggestions.
 
 import json
 
-from app.services.ai_engine import AIEngine, AIMessage
 from app.models.resume import (
+    ATSComparisonResponse,
     ResumeAnalysisResponse,
     ResumeScore,
-    ATSComparisonResponse,
 )
+from app.services.ai_engine import AIEngine
 
 RESUME_ANALYSIS_PROMPT = """You are an expert resume reviewer and career coach specializing in tech industry hiring.
 
@@ -122,7 +122,9 @@ class ResumeService:
         Returns:
             ATSComparisonResponse with match score and keyword analysis.
         """
-        prompt = f"Resume:\n\n{resume_text}\n\n---\n\nJob Description:\n\n{job_description}"
+        prompt = (
+            f"Resume:\n\n{resume_text}\n\n---\n\nJob Description:\n\n{job_description}"
+        )
 
         response = await self.ai.analyze(
             prompt=prompt,

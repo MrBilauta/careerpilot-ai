@@ -8,9 +8,15 @@ from pydantic import BaseModel, Field
 class ResumeAnalysisRequest(BaseModel):
     """Request to analyze resume text."""
 
-    resume_text: str = Field(..., min_length=50, description="Extracted resume text content")
-    job_title: str | None = Field(None, description="Target job title for tailored analysis")
-    job_description: str | None = Field(None, description="Job description for ATS comparison")
+    resume_text: str = Field(
+        ..., min_length=50, description="Extracted resume text content"
+    )
+    job_title: str | None = Field(
+        None, description="Target job title for tailored analysis"
+    )
+    job_description: str | None = Field(
+        None, description="Job description for ATS comparison"
+    )
 
 
 class ResumeScore(BaseModel):

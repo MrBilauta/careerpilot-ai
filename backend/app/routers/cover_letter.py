@@ -5,9 +5,9 @@ Cover Letter Generator API endpoints.
 from fastapi import APIRouter, Depends
 
 from app.dependencies import get_ai_engine
+from app.models.project import CoverLetterRequest, CoverLetterResponse
 from app.services.ai_engine import AIEngine
 from app.services.cover_letter_service import CoverLetterService
-from app.models.project import CoverLetterRequest, CoverLetterResponse
 
 router = APIRouter(prefix="/cover-letter")
 

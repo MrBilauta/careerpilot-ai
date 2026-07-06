@@ -4,8 +4,8 @@ Interview preparation service.
 
 import json
 
-from app.services.ai_engine import AIEngine
 from app.models.project import InterviewPrepResponse, InterviewQuestion
+from app.services.ai_engine import AIEngine
 
 INTERVIEW_PROMPT = """You are a senior tech interviewer who helps candidates prepare for software engineering interviews.
 

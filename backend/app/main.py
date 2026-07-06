@@ -6,8 +6,8 @@ middleware, routers, and event handlers. The factory pattern enables
 easy testing and configuration swapping.
 """
 
-from contextlib import asynccontextmanager
 from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,6 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.middleware.rate_limit import add_rate_limiting
 from app.routers import (
+    analytics,
     ats,
     code_review,
     community,
@@ -27,7 +28,6 @@ from app.routers import (
     jobs,
     linkedin,
     mentor,
-    analytics,
     projects,
     resume,
     roadmap,
@@ -73,7 +73,9 @@ def create_app() -> FastAPI:
     app.include_router(health.router, prefix=api_prefix, tags=["Health"])
     app.include_router(resume.router, prefix=api_prefix, tags=["Resume"])
     app.include_router(ats.router, prefix=api_prefix, tags=["ATS Scanner"])
-    app.include_router(github_analyzer.router, prefix=api_prefix, tags=["GitHub Analyzer"])
+    app.include_router(
+        github_analyzer.router, prefix=api_prefix, tags=["GitHub Analyzer"]
+    )
     app.include_router(linkedin.router, prefix=api_prefix, tags=["LinkedIn Analyzer"])
     app.include_router(cover_letter.router, prefix=api_prefix, tags=["Cover Letter"])
     app.include_router(interview.router, prefix=api_prefix, tags=["Interview"])

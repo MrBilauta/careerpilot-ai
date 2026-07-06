@@ -5,9 +5,9 @@ Interview Preparation API endpoints.
 from fastapi import APIRouter, Depends
 
 from app.dependencies import get_ai_engine
+from app.models.project import InterviewPrepRequest, InterviewPrepResponse
 from app.services.ai_engine import AIEngine
 from app.services.interview_service import InterviewService
-from app.models.project import InterviewPrepRequest, InterviewPrepResponse
 
 router = APIRouter(prefix="/interview")
 
