@@ -11,6 +11,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub Stars](https://img.shields.io/github/stars/MrBilauta/careerpilot-ai?style=social)](https://github.com/MrBilauta/careerpilot-ai)
 [![GitHub Forks](https://img.shields.io/github/forks/MrBilauta/careerpilot-ai?style=social)](https://github.com/MrBilauta/careerpilot-ai/fork)
+[![CI](https://github.com/MrBilauta/careerpilot-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/MrBilauta/careerpilot-ai/actions/workflows/ci.yml)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord&logoColor=white)](https://discord.gg/YfagG2rG4n)
 [![Twitter Follow](https://img.shields.io/twitter/follow/Bilautaly?style=social)](https://x.com/Bilautaly)
 [![Instagram Follow](https://img.shields.io/badge/Instagram-Follow-E4405F?logo=instagram&logoColor=white)](https://instagram.com/theycallme.bilauta)
