@@ -16,7 +16,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/Bilautaly?style=social)](https://x.com/Bilautaly)
 [![Instagram Follow](https://img.shields.io/badge/Instagram-Follow-E4405F?logo=instagram&logoColor=white)](https://instagram.com/theycallme.bilauta)
 
-**[Website](https://careerpilot.ai)** · **[Documentation](https://docs.careerpilot.ai)** · **[Discord](https://discord.gg/YfagG2rG4n)** · **[Contributing](CONTRIBUTING.md)**
+**[Website](#)** · **[Documentation](#)** · **[Discord](https://discord.gg/YfagG2rG4n)** · **[Contributing](CONTRIBUTING.md)**
 
 <br />
 
